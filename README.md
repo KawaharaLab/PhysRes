@@ -1,13 +1,21 @@
-# PHysRes
-**P**hysical **Hys**teretic **R**eservoir
+# PhysRes
 
-## Setup
+## Summary
+
+PhysRes, a framework derived from physical reservoir computing (PRC), allows for a minimal network setting to be trained and infer information (e.g. predict time series) with high accuracy (image classification: accuracy >0.97 on MNIST test dataset; time series prediction: NRMSE<0.1 on NARMA10).
+
+## Quick install
+
+In root directory, run:
+>pip install -e .
+
+## Test
 This baseline code is based on our paper:
 
 >C. Caremel, Y. Kawahara, K. Nakajima, Hysteretic reservoir, Physical Review Applied 22 (6), 064045, 2024.
 
-To test for a simple example, simply run the script `predictNARMA10.py` in your preferred IDE (e.g. Spyder, Jupyter notebook).\
-A plot of the prediction should be displayed, along with the NRMSE error relative to the target (expected error < 0.1).
+To test for a simple example, simply run the script `NARMA10.py`.\
+NRMSE error is computed between prediction and target.
 
 ## Model
 Hysteretic behavior can be defined as a dynamic shift, or lag, denoted $\lambda$, between the input and the output of a system. 
@@ -56,3 +64,13 @@ If you use any ideas from the papers or code in this repo, please consider citin
   url = {https://link.aps.org/doi/10.1103/PhysRevApplied.22.064045}
 }
 ```
+
+## Guideline
+
+yapf (Google style) was used for code formatting. If you want to contribute:
+
+>pip3 install yapf --upgrade
+
+Then, make sure you are at top level of the repo and run
+
+>bash ./scripts/format.sh
