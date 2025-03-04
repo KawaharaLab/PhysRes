@@ -15,7 +15,7 @@ This baseline code is based on our paper:
 >C. Caremel, Y. Kawahara, K. Nakajima, Hysteretic reservoir, Physical Review Applied 22 (6), 064045, 2024.
 
 To test for a simple example, simply run the script `NARMA10.py`.\
-NRMSE error is computed between prediction and target.
+The NRMSE is computed between prediction and target.
 
 ## Model
 Hysteretic behavior can be defined as a dynamic shift, or lag, denoted $\lambda$, between the input and the output of a system. 
