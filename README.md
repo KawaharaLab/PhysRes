@@ -10,7 +10,7 @@ In root directory, run:
 >pip install -e .
 
 ## Test
-This baseline code is based on our paper:
+This baseline code is adapted from our paper:
 
 >C. Caremel, Y. Kawahara, K. Nakajima, Hysteretic reservoir, Physical Review Applied 22 (6), 064045, 2024.
 
