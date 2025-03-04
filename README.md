@@ -28,7 +28,7 @@ In code, the model is inititalized with `physres = prc.PHysRes(u, N, x0, lamda, 
 
 ## Task example
 
-The input timeseries is the NARMA10 task, where $u_k$ and $A_k$ represent the pair of inputs (also random numbers drawn from the uniform distribution) and the corresponding target:\
+The input timeseries in the NARMA10 task has $u_k$ and $A_k$ representing the pair of inputs (also random numbers drawn from the uniform distribution) and the corresponding target:\
 $A_{k+1} = 0.3A_k + 0.05A_k(\sum_{i=0}^9A_{k-i}) + 1.5u_{k-9}u_k + 0.1$
 
 The training of the output weights $W_{out}$ is then done via linear regression over the target $y$, and called via `physres.Run()`:\
@@ -38,6 +38,7 @@ The prediction $y_p$ is then done over the trained state $x_t$:\
 $y_p = x_t \cdot W_{out}$
 
 This can be obtained from `physres.Test(0.7, Y)` where the parameter 0.7 represents the ratio of the number of training samples over the total number of points in the timeseries, and Y is the target timeseries.
+For MNIST, unzip MNIST-dataset.zip first, and run the implementation of the model trained as a classifier. 
 
 ## Hyperparameters
 Although it is recommended to keep the defaults settings, the two main hyperparameters latency and scaling can be changed for optimization on the specific task. For example a grid search can be implemented for fine-tuning.
