@@ -47,7 +47,7 @@ Also, the error can be computed with either NRMSE (recommended) or NMSE.
 For more details, please check: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.22.064045
 
 ## Credits
-If you use any ideas from the papers or code in this repo, please consider citing the authors:
+If you use any ideas from the paper or code in this repo, please consider citing the authors:
 
 ```bibtex
 @article{PhysRevApplied.22.064045,
