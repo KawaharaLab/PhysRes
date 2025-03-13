@@ -55,7 +55,7 @@ nrmse = utils.computeEr(Y_test[wo:], Ypred[wo:], 'NRMSE')
 print(f'NRMSE after first {wo} points:', nrmse)
 
 fig, ax = plt.subplots()
-plt.plot(physres.X_test[wo], linewidth=.1, c='k', label='Input')
+plt.plot(physres.u_test[wo:], linewidth=.1, c='k', label='Input u')
 plt.plot(Y_test[wo:], linewidth=.5, c='r', label='Target Y')
 plt.plot(Ypred[wo:], linewidth=.5, linestyle="--", c='b', label='Prediction')
 plt.legend()
