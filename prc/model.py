@@ -29,7 +29,11 @@ class PhysRes(object):
 
         self.u, self.N, self.x0, self.lamda, self.alpha, self.tau = u, N, x0, lamda, alpha, tau
       
-        self.L, self.M = u.shape[0], u.shape[1]
+        if self.u.ndim == 1: 
+            self.u = self.u.reshape(-1,1)
+            print(f"reshaping u to {self.u.shape}...")
+
+        self.L, self.M = self.u.shape[0], self.u.shape[1]
         
         #initialize the arrays
         if X is None: 
@@ -88,6 +92,7 @@ class PhysRes(object):
         split = int(self.L * split_r)
 
         self.X_train, self.X_test = self.X[:split], self.X[split:]
+        self.u_train, self.u_test = self.u[:split], self.u[split:]
         self.Y_train, self.Y_test = Y[:split], Y[split:]
 
         self.Wout, self.Ypred_test = linear_regression(self.X_train, self.Y_train, self.X_test)
