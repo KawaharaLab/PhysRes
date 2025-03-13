@@ -23,7 +23,7 @@ long_description = (this_directory / "README.md").read_text()
 setup(
     name='PhysRes',
     #version=__version__,
-    version='0.0.1',
+    version='0.0.2',
     package_dir={'': '.'},
     packages=find_packages(where='.'),
     #url='https://github.com/',
