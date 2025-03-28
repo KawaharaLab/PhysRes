@@ -24,7 +24,7 @@ The hysteretic encoding $\sigma$ is defined as returning 0 if $k < \lambda$, whe
 The hysteretic reservoir model size is set with $N$ units, some initial state condition $x_0$, and driven with external input $u(t)$, where each state update at time step $t$ is defined by the functional output of the hysteretic encoding described previously, and dependent on the previous state (here we fix the state delay $\tau=1$):\
 ${x}(t) = \sigma(u(t) \cdot W_{in} + {x}(t-\tau))$, where $W_{in}$ represents a fixed input weight matrix (random numbers drawn from the uniform distribution).
 
-In code, the model is inititalized with `physres = prc.PHysRes(u, N, x0, lamda, alpha, tau)` 
+In code, the model is inititalized with `physres = prc.PhysRes(u, N, x0, lamda, alpha, tau)` 
 
 ## Task examples
 
