@@ -1,4 +1,6 @@
-numpymatplotlib
+numpy
+matplotlib
 pandas
 seaborn
 scikit-learn
+tqdm
