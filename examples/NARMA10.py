@@ -23,7 +23,7 @@ from scripts import utils
 N = 1000  #Reservoir size (number of nodes)
 
 alpha = 1  #Alpha (scaling hyperparam, type: float)
-lamda = 1  #latency (type: int). Note: "lambda" is already taken in python builtins (the nonymous lambda function)
+lamda = 1  #latency (type: int). Note: "lambda" is already taken in python builtins (the anonymous lambda function)
 
 tau = 1  #Tau (state delay, generally set to 1, type: int)
 x0 = 0.1  #Initial condition, any will do e.g. 0, 0.05...
