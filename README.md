@@ -14,7 +14,7 @@ This baseline code is adapted from our paper:
 
 >C. Caremel, Y. Kawahara, K. Nakajima, Hysteretic reservoir, Physical Review Applied 22 (6), 064045, 2024.
 
-To test for a simple example, simply run the script `NARMA10.py`.\
+To test for a simple example, simply run the script `examples/NARMA10.py`.\
 The NRMSE is computed between prediction and target.
 
 ## Model
@@ -24,24 +24,31 @@ The hysteretic encoding $\sigma$ is defined as returning 0 if $k < \lambda$, whe
 The hysteretic reservoir model size is set with $N$ units, some initial state condition $x_0$, and driven with external input $u(t)$, where each state update at time step $t$ is defined by the functional output of the hysteretic encoding described previously, and dependent on the previous state (here we fix the state delay $\tau=1$):\
 ${x}(t) = \sigma(u(t) \cdot W_{in} + {x}(t-\tau))$, where $W_{in}$ represents a fixed input weight matrix (random numbers drawn from the uniform distribution).
 
-In code, the model is inititalized with `physres = prc.PhysRes(u, N, x0, lamda, alpha, tau)` 
+In code, the model is initialized with 
+```python
+from prc.model import PhysRes
+
+physres = PhysRes(u, N, x0, lamda, alpha, tau)
+```
 
 ## Task examples
 
-The input timeseries in the NARMA10 task has $u_k$ and $A_k$ representing the pair of inputs (also random numbers drawn from the uniform distribution) and the corresponding target:\
+The NARMA10 task uses a random input \(u_k\) drawn from the uniform distribution and the corresponding recursively generated target \(A_k\):\
 $A_{k+1} = 0.3A_k + 0.05A_k(\sum_{i=0}^9A_{k-i}) + 1.5u_{k-9}u_k + 0.1$
 
-The training of the output weights $W_{out}$ is then done via linear regression over the target $y$, and called via `physres.Run()`:\
-$W_{out} = W_{out}^{+} \cdot y$
+The training of the output weights $W_{out}$ is then done via linear regression over the target $y$, and called after `physres.Run()`:\
+$W_{out} = W_{out}^{+} \cdot y_{train}$
 
-The prediction $y_p$ is then done over the trained state $x_t$:\
-$y_p = x_t \cdot W_{out}$
+Note that, as specified in our paper, the notation $W_{\mathrm{out}}^{+}$ refers to the Moore–Penrose pseudoinverse of the training-state matrix $x_{\mathrm{train}}$.
 
-This can be obtained from `physres.Test(0.7, Y)` where the parameter 0.7 represents the ratio of the number of training samples over the total number of points in the timeseries, and Y is the target timeseries.\
+The prediction $y_p$ is then done over $x_{test}$:\
+$y_p = x_{test} \cdot W_{out}$
+
+This can be obtained from `physres.TrainTest(0.7, Y)` where the parameter 0.7 represents the ratio of the number of training samples over the total number of points in the timeseries, and Y is the target timeseries.\
 For MNIST, unzip MNIST-dataset.zip in the data folder first, and run the implementation of the model trained as a classifier. 
 
 ## Hyperparameters
-Although it is recommended to keep the defaults settings, the two main hyperparameters latency and scaling can be changed for optimization on a specific task. For example a grid search can be implemented for fine-tuning.
+Although it is recommended to keep the default settings, the two main hyperparameters latency and scaling can be changed for optimization on a specific task. For example a grid search can be implemented for fine-tuning.
 Normalization should be done with min-max for best results, but sine wave is used in the physical implementation.
 Also, the error can be computed with either NRMSE (recommended) or NMSE.
 For more details, please check: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.22.064045
