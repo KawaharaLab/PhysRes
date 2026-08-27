@@ -39,7 +39,7 @@ $A_{k+1} = 0.3A_k + 0.05A_k(\sum_{i=0}^9A_{k-i}) + 1.5u_{k-9}u_k + 0.1$
 The training of the output weights $W_{out}$ is then done via linear regression over the target $y$, and called after `physres.Run()`:\
 $W_{out} = W_{out}^{+} \cdot y_{train}$
 
-Note that, as specified in our paper, the notation $W_{\mathrm{out}}^{+}$ refers to the Moore–Penrose pseudoinverse of the training-state matrix $x_{\mathrm{train}}$.
+Note that, as specified in our paper, the notation $W_{\mathrm{out}}^{+}$ refers to the Moore–Penrose pseudoinverse of the training-state $x_{\mathrm{train}}$.
 
 The prediction $y_p$ is then done over $x_{test}$:\
 $y_p = x_{test} \cdot W_{out}$
